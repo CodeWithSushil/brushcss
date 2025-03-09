@@ -2,7 +2,7 @@
 
 namespace Brush\Css;
 
-Class Tuli {
+Class Brush {
 
   public static function run(){
     return print('BrushCSS running...');
