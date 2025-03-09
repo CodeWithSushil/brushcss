@@ -1,17 +1,19 @@
 <?php
 
+namespace Brush\Css;
+
 class Files {
 
   public static function createFile(){
     $file = [];
-    if(!file_exists('tuli.min.css')){
-      touch('tuli.min.css');
+    if(!file_exists('brush.min.css')){
+      touch('brush.min.css');
     }
     self::readFiles();
   }
 
   public static function readFiles(){
-    fopen('tuli.min.css','r+');
+    fopen('brush.min.css','r+');
   }
 }
 

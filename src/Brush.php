@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Tuli\Tuli;
+namespace Brush\Css;
 
 Class Tuli {
 
   public static function run(){
-    return print('Tuli running...');
+    return print('BrushCSS running...');
   }
 
 }

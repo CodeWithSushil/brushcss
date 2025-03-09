@@ -1,11 +1,11 @@
 {
-    "name": "tuli/tuli",
+    "name": "brushcss/brushcss",
     "description": "tuli",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Tuli\\Tuli\\": "src/"
+            "Brush\\Css\\": "src/"
         }
     },
     "authors": [
