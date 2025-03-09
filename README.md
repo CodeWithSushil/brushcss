@@ -1,2 +1,2 @@
-# BrushCSS
-Brush CSS 🎨🖌️
+# 🖌️ BrushCSS
+🎨🖌️ Brush CSS
