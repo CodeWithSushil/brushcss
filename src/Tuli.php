@@ -4,11 +4,11 @@ namespace Tuli\Tuli;
 
 Class Tuli {
 
-  public function run(){
+  public static function run(){
     return print('Tuli running...');
   }
 
 }
 
-$tuli = new Tuli();
-$tuli->run();
+//$tuli = new Tuli();
+//$tuli->run();
