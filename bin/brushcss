@@ -1,0 +1,103 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use BrushCSS\JIT\JITEngine;
+use BrushCSS\JIT\ClassExtractor;
+use BrushCSS\JIT\Resolver;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$command = $argv[1] ?? 'help';
+
+switch ($command) {
+
+    case 'build':
+        echo "Building BrushCSS...\n";
+
+        $configFile = getcwd() . '/brushcss.php';
+
+        if (!file_exists($configFile)) {
+            echo "Config file not found: brushcss.php\n";
+            exit(1);
+        }
+
+        $config = require $configFile;
+
+        $extractor = new ClassExtractor();
+        $resolver  = new Resolver();
+        $jit       = new JITEngine($resolver);
+
+        $viewDir = getcwd() . '/resources/views';
+
+        if (!is_dir($viewDir)) {
+            echo "views directory not found\n";
+            exit(1);
+        }
+
+        $files = [];
+
+        foreach (new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($viewDir)
+        ) as $file) {
+            if ($file->isFile() && preg_match('/\.(php|html)$/', $file)) {
+                $files[] = $file->getPathname();
+            }
+        }
+
+        $classes = [];
+
+        foreach ($files as $file) {
+            $classes = [
+                ...$classes,
+                ...$extractor->extractFromFile($file)
+            ];
+        }
+
+        $css = $jit->buildFromClasses(array_unique($classes), $config);
+
+        $output = getcwd() . '/public/css/style.css';
+
+        if (!is_dir(dirname($output))) {
+            mkdir(dirname($output), 0777, true);
+        }
+
+        file_put_contents($output, $css);
+
+        echo "CSS generated at public/css/style.css ✅\n";
+        break;
+
+    case 'init':
+        $configPath = getcwd() . '/brushcss.php';
+
+        if (file_exists($configPath)) {
+            echo "brushcss.php already exists\n";
+            exit;
+        }
+
+        file_put_contents($configPath, <<<PHP
+<?php
+
+return [
+    'colors' => [
+        'blue-500' => '#3b82f6',
+        'red-100'  => '#fee2e2',
+    ],
+    'spacing' => [
+        '4' => '16px',
+        '5' => '20px',
+    ],
+];
+PHP);
+
+        echo "brushcss.php created ✅\n";
+        break;
+
+    default:
+        echo "BrushCSS CLI\n";
+        echo "Usage:\n";
+        echo "  brushcss build   Build CSS\n";
+        echo "  brushcss init    Create config\n";
+        break;
+}

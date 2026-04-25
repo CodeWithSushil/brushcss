@@ -5,26 +5,69 @@
       "utility-first",
       "css",
       "JIT",
-      "dev"
+      "dev",
+      "brushcss"
     ],
     "type": "library",
     "license": "MIT",
+    "require": {
+        "php": "^8.3",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "tomasvotruba/type-coverage": "^2.1",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^13.1",
+        "phpstan/extension-installer": "^1.4",
+        "laravel/pint": "^1.29"
+    },
     "autoload": {
         "psr-4": {
             "Brush\\Css\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Sushil Kumar",
-            "email": "sushilkumbhar77@gmail.com"
+            "email": "sushilkumbhar77@gmail.com",
+            "role": "Developer"
         }
     ],
-    "minimum-stability": "stable",
+    "support": {
+        "issues": "https://github.com/CodeWithSushil/brushcss/issues",
+        "source": "https://github.com/CodeWithSushil/brushcss"
+    },
+    "funding": [
+        {
+            "type": "BuyMeACoffee",
+            "url": "https://buymeacoffee.com/CodeWithSushil"
+        }
+    ],
+    "bin": [
+        "bin/brushcss"
+    ],
+    "scripts": {
+        "test:lint": "pint",
+        "test:type": "phpstan",
+        "test:unit": "phpunit",
+        "test:coverage": "phpunit",
+        "test": [
+            "@test:lint"
+        ]
+    },
     "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "optimize-autoloader": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "phpstan/extension-installer": true
         }
     },
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
