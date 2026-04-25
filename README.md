@@ -1,6 +1,8 @@
-# 🎨🖌️ BrushCSS
+## 🎨🖌️ BrushCSS
 
-> A PHP-native utility-first CSS engine with JIT compilation, plugin marketplace support, and deep framework integration (Hurricane-ready).
+[![Tests](https://github.com/CodeWithSushil/brushcss/actions/workflows/tests.yml/badge.svg)](https://github.com/CodeWithSushil/brushcss/actions/workflows/tests.yml)
+
+A PHP-native utility-first CSS engine with JIT compilation, plugin marketplace support, and deep framework integration (Hurricane-ready).
 
 ---
 
