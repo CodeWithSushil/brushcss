@@ -244,7 +244,7 @@ No heavy bundles. No unused CSS. No frontend build dependency.
 
 BrushCSS is evolving into:
 
-«A PHP-native styling compiler ecosystem with plugin marketplace and framework-level integration»
+> A PHP-native styling compiler ecosystem with plugin marketplace and framework-level integration.
 
 Comparable in concept to modern frontend tooling, but fully backend-driven.
 
