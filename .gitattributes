@@ -1,3 +1,21 @@
+* text=auto
+
+# PHP files should have LF line endings
+*.php text eol=lf
+
+# Markdown files
+*.md text eol=lf
+
+# JSON files
+*.json text eol=lf
+
+# XML files
+*.xml text eol=lf
+
+*.neon text eol=lf
+
+*.yml text eol=lf
+
 /.gitignore export-ignore
 /.gitattributes export-ignore
 /.editorconfig export-ignore
@@ -5,3 +23,5 @@
 /composer.lock export-ignore
 /tests/ export-ignore
 phpunit.xml export-ignore
+phpstan.neon export-ignore
+pint.json export-ignore
