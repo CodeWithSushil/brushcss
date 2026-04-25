@@ -99,21 +99,24 @@ View file ("views/login.php").
 
 ### 🎨 Utility Classes
 
-Spacing
+`Spacing:`
 
-p-4, p-6, mt-5, mb-2
+`p-4`, `p-6`, `mt-5`, `mb-2`
 
-Colors
+`Colors:`
 
-bg-blue-500, text-red-100
+`bg-blue-500`, `text-red-100`
 
-Layout
+`Layout:`
 
-flex, grid, hidden, block
+* `flex`
+* `grid`
+* `hidden`
+* `block`
 
-Effects
+`Effects:`
 
-transition, duration-300, hover:bg-blue-500
+`transition`, `duration-300`, `hover:bg-blue-500`
 
 ---
 
@@ -164,19 +167,19 @@ _BrushCSSMiddleware::class_
 
 ### ⚡ Architecture
 
-View Files
+View Files <br>
    ↓
-Class Extractor
+Class Extractor <br>
    ↓
-JIT Engine
+JIT Engine <br>
    ↓
-Variant Compiler
+Variant Compiler <br>
    ↓
-Plugin System
+Plugin System <br>
    ↓
-CSS Output
+CSS Output <br>
    ↓
-public/style.css
+`public/css/style.css`
 
 ---
 
@@ -190,7 +193,7 @@ public/style.css
 
 #### ⚡ Variant System
 
-hover:, md:, lg:, dark:
+`hover:`, `md:`, `lg:`, `dark:`
 
 ### 🧱 Grid & Layout Engine
 
