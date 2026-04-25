@@ -1,6 +1,12 @@
 {
     "name": "brushcss/brushcss",
-    "description": "tuli",
+    "description": "A PHP-native utility-first CSS engine with JIT compilation, plugin marketplace support, and deep framework integration (Hurricane-ready).",
+    "keywords": [
+      "utility-first",
+      "css",
+      "JIT",
+      "dev"
+    ],
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -23,5 +29,6 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
-    }
+    },
+    "prefer-stable": true
 }
