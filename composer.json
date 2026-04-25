@@ -46,6 +46,14 @@
         {
             "type": "BuyMeACoffee",
             "url": "https://buymeacoffee.com/CodeWithSushil"
+        },
+        {
+            "type": "opencollective",
+            "url": "https://opencollective.com/CodeWithSushil"
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/CodeWithSushil"
         }
     ],
     "bin": [
@@ -66,6 +74,9 @@
         "optimize-autoloader": true,
         "allow-plugins": {
             "phpstan/extension-installer": true
+        },
+        "platform": {
+            "php": "8.3.0"
         }
     },
     "minimum-stability": "dev",
