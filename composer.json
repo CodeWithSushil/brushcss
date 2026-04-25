@@ -12,7 +12,8 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-mbstring": "*"
     },
     "require-dev": {
         "tomasvotruba/type-coverage": "^2.1",
@@ -61,11 +62,14 @@
     ],
     "scripts": {
         "test:lint": "pint",
-        "test:type": "phpstan",
-        "test:unit": "phpunit",
-        "test:coverage": "phpunit",
+        "test:type": "phpstan analyse",
+        "test:unit": "phpunit --testdox",
+        "test:coverage": "phpunit --coverage-text --coverage-clover coverage.xml",
         "test": [
-            "@test:lint"
+            "@test:lint",
+            "@test:type",
+            "@test:unit",
+            "@test:coverage"
         ]
     },
     "config": {
