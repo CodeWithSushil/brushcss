@@ -1,6 +1,12 @@
 ## 🎨🖌️ BrushCSS
 
 [![Tests](https://github.com/CodeWithSushil/brushcss/actions/workflows/tests.yml/badge.svg)](https://github.com/CodeWithSushil/brushcss/actions/workflows/tests.yml)
+![Packagist Version](https://img.shields.io/packagist/v/brushcss/brushcss?style=flat&logo=composer&logoColor=%23fff)
+![Packagist Dependency Version](https://img.shields.io/packagist/dependency-v/brushcss/brushcss/php?style=flat&logo=php&logoColor=blue&label=PHP&color=blue)
+![Packagist License](https://img.shields.io/packagist/l/brushcss/brushcss?style=flat&label=License&color=blue)
+![Packagist Downloads](https://img.shields.io/packagist/dt/brushcss/brushcss?style=flat&logo=packagist&label=Downloads&color=blue)
+![Packagist Stars](https://img.shields.io/packagist/stars/brushcss/brushcss?style=flat&logo=github&logoColor=%23ffffff&label=%F0%9F%8C%9F%20Stars)
+
 
 A PHP-native utility-first CSS engine with JIT compilation, plugin marketplace support, and deep framework integration (Hurricane-ready).
 
