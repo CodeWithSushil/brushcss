@@ -11,7 +11,7 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "ext-json": "*"
     },
     "require-dev": {
@@ -76,7 +76,7 @@
             "phpstan/extension-installer": true
         },
         "platform": {
-            "php": "8.3.0"
+            "php": "8.4.1"
         }
     },
     "minimum-stability": "dev",
