@@ -2,129 +2,46 @@
 
 namespace BrushCSS\CLI;
 
-use BrushCSS\CLI\Commands\AddCommand;
+use Symfony\Component\Console\Application as SymfonyApplication;
+use BrushCSS\CLI\BuildCommand;
+use BrushCSS\Config\ConfigLoader;
 
-final class Application
+final class Application extends SymfonyApplication
 {
-    public function run(array $argv): void
+    private array $config = [];
+
+    public function __construct()
     {
-        $cmd = $argv[1] ?? null;
-
-        match ($cmd) {
-
-            'add' => (new AddCommand())
-                ->handle($argv[2] ?? ''),
-
-            'build' => $this->build(),
-
-            default => $this->help()
-        };
+        parent::__construct('BrushCSS', '1.0.0');
     }
 
-    private function builds(): void
+    // -----------------------------
+    // BOOTSTRAP SYSTEM
+    // -----------------------------
+    public function boot(): void
     {
-         echo "🔍 Scanning files...\n";
-
-    $paths = ['examples']; // change to 'views' in real app
-
-    $extractor = new \BrushCSS\JIT\ClassExtractor();
-    $resolver  = new \BrushCSS\JIT\Resolver();
-    $engine    = new \BrushCSS\JIT\JITEngine($resolver);
-
-    $classes = [];
-
-    foreach ($paths as $path) {
-        foreach (glob($path . '/*.php') as $file) {
-            $content = file_get_contents($file);
-
-            $found = $extractor->extract($content);
-
-            echo "📄 {$file} → " . implode(', ', $found) . "\n";
-
-            $classes = array_merge($classes, $found);
-        }
+        $this->loadConfig();
+        $this->registerCommands();
     }
 
-    $classes = array_unique($classes);
-
-    echo "⚙️ Generating CSS...\n";
-
-    $css = $engine->build($classes);
-
-    if (!is_dir('public')) {
-        mkdir('public', 777, true);
-    }
-
-    file_put_contents('public/style.css', $css);
-
-    echo "✅ CSS written to public/style.css\n";
-        echo "Building CSS...\n";
-    }
-
-    private function help(): void
+    // -----------------------------
+    // CONFIG LOADING
+    // -----------------------------
+    private function loadConfig(): void
     {
-        echo "brushcss add <plugin>\nbrushcss build\n";
+        $this->config = ConfigLoader::load();
     }
 
-    private function build(): void
-{
-    echo "🚀 Build started\n";
-
-    $paths = ['examples'];
-
-    $extractor = new \BrushCSS\JIT\ClassExtractor();
-    $resolver  = new \BrushCSS\JIT\Resolver();
-    $engine    = new \BrushCSS\JIT\JITEngine($resolver);
-
-    $classes = [];
-
-    foreach ($paths as $path) {
-
-        echo "📂 Scanning: {$path}\n";
-
-        $files = glob($path . '/*.php');
-
-        if (!$files) {
-            echo "❌ No files found in {$path}\n";
-        }
-
-        foreach ($files as $file) {
-
-            echo "📄 Reading: {$file}\n";
-
-            $content = file_get_contents($file);
-
-            if (!$content) {
-                echo "❌ Empty file: {$file}\n";
-            }
-
-            $found = $extractor->extract($content);
-
-            echo "🎯 Classes: " . json_encode($found) . "\n";
-
-            $classes = array_merge($classes, $found);
-        }
+    public function config(): array
+    {
+        return $this->config;
     }
 
-    $classes = array_unique($classes);
-
-    echo "📦 Final classes: " . json_encode($classes) . "\n";
-
-    $css = $engine->build($classes);
-
-    echo "🧾 Generated CSS:\n$css\n";
-
-    if (!is_dir('public')) {
-        echo "📁 Creating public directory...\n";
-        mkdir('public', 0777, true);
+    // -----------------------------
+    // COMMAND REGISTRATION
+    // -----------------------------
+    private function registerCommands(): void
+    {
+        $this->add(new BuildCommand());
     }
-
-    $result = file_put_contents('public/style.css', $css);
-
-    if ($result === false) {
-        echo "❌ Failed to write CSS file\n";
-    } else {
-        echo "✅ CSS written to public/style.css\n";
-    }
-}
 }
