@@ -1,6 +1,15 @@
 #!/usr/bin/env php
 <?php
 
+require __DIR__ . '/../vendor/autoload.php';
+
+use BrushCSS\CLI\Application;
+
+$app = new Application();
+$app->run($argv);
+
+
+/*
 declare(strict_types=1);
 
 use BrushCSS\JIT\JITEngine;
@@ -101,3 +110,4 @@ PHP);
         echo "  brushcss init    Create config\n";
         break;
 }
+*/
