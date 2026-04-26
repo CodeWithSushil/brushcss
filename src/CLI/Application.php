@@ -42,6 +42,6 @@ final class Application extends SymfonyApplication
     // -----------------------------
     private function registerCommands(): void
     {
-        $this->add(new BuildCommand($this->config));
+        $this->addCommand(new BuildCommand());
     }
 }
