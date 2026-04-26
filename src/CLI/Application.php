@@ -3,7 +3,7 @@
 namespace BrushCSS\CLI;
 
 use Symfony\Component\Console\Application as SymfonyApplication;
-use BrushCSS\CLI\BuildCommand;
+use BrushCSS\CLI\Commands\BuildCommand;
 use BrushCSS\Config\ConfigLoader;
 
 final class Application extends SymfonyApplication
@@ -42,6 +42,6 @@ final class Application extends SymfonyApplication
     // -----------------------------
     private function registerCommands(): void
     {
-        $this->add(new BuildCommand());
+        $this->add(new BuildCommand($this->config));
     }
 }
